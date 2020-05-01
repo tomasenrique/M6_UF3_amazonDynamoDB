@@ -11,6 +11,17 @@ repositories {
     mavenCentral()
 }
 
+// Versiones de dependencias a usar guardadas en variables
+def AWS_SDK_DYNAMODB = '1.11.505'
+def AWS_SDK_CORE = '1.11.505'
+def JAVA_SDK_S3 = 'aws-java-sdk-s3'
+
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
+
+    // Dependencias para poder trabajar con las bases de datos NoSQL de Amazon DynamoDB
+    compile group: 'com.amazonaws', name: 'aws-java-sdk-dynamodb', version: AWS_SDK_DYNAMODB
+    compile group: 'com.amazonaws', name: 'aws-java-sdk-core', version: AWS_SDK_CORE
+    compile "com.amazonaws:$JAVA_SDK_S3"
+
 }
