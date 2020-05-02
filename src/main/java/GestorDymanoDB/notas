@@ -1,0 +1,96 @@
+Tabla: datos_pais
+Campos:
+Pais    => clave de particion
+Fecha   => clave de ordenacion
+
+Contagios nuevos
+Contagios acumulados
+Muertos nuevos
+Muertos acumulados
+Curados nuevos
+Curados acumulados
+Tests acumulados
+Tests nuevos
+
+========================================================================================================================
+========================================================================================================================
+TIPO DE DATOS PARA LOS CAMPOS DE CLAVE DE PARTICION Y ORDENACION
+Tipo de atributo ==>> AttributeDefinition
+    El tipo de datos para el atributo, donde:
+
+    S - el atributo es de tipo String
+    N - el atributo es de tipo Número
+    B - el atributo es de tipo binario
+
+========================================================================================================================
+========================================================================================================================
+CONSUMO DE UNIDADES DE CAPACIDAD PARA LAS LECTURAS
+
+A continuación se describe cómo se consumen las unidades de capacidad de lectura en las operaciones de lectura de DynamoDB:
+
+GetItem:
+Lee un solo elemento de una tabla. Para determinar el número de unidades de capacidad que GetItem va a consumir,
+tome el tamaño del elemento y redondéela al múltiplo de 4 KB inmediatamente superior. Si ha especificado una lectura de
+consistencia alta, este es el número de unidades de capacidad necesarias. Si se trata de una lectura consistente final
+(el valor predeterminado), divida este número por dos.
+
+Por ejemplo, si lee un elemento de 3,5 KB, DynamoDB redondea su tamaño a 4 KB. Si lee un elemento de 10 KB, DynamoDB
+redondea su tamaño a 12 KB.
+
+BatchGetItem:
+Lee hasta 100 elementos de una o varias tablas. DynamoDB procesa cada elemento del lote como una
+solicitud GetItem individual; en consecuencia, DynamoDB redondea primero el tamaño de cada elemento al múltiplo de
+4 KB inmediatamente superior y, a continuación, calcula el tamaño total. El resultado no es necesariamente igual que
+el tamaño total de todos los elementos. Por ejemplo, si BatchGetItem lee un elemento de 1,5 KB y un elemento de
+6,5 KB, DynamoDB calcula sus tamaños en 12 KB (4 KB + 8 KB) y no en 8 KB (1,5 KB + 6,5 KB).
+
+Query:
+Lee varios elementos que tienen el mismo valor de clave de partición. Todos los elementos devueltos se tratan
+como una sola operación de lectura, de tal forma que DynamoDB calcula el tamaño total de todos los elementos y, a
+continuación, redondea al múltiplo de 4 KB inmediatamente superior. Por ejemplo, supongamos que la consulta devuelve 10
+elementos cuyo tamaño combinado es de 40,8 KB. DynamoDB redondea el tamaño del elemento de la operación a 44 KB. Si una
+consulta devuelve 1500 elementos de 64 bytes cada uno, el tamaño acumulado es de 96 KB.
+
+Scan:
+Lee todos los elementos de una tabla. DynamoDB considera el tamaño de los elementos que se evalúan, no el tamaño
+de los elementos que el examen devuelve.
+
+
+========================================================================================================================
+========================================================================================================================
+
+CONSUMO DE UNIDADES DE CAPACIDAD PARA LAS ESCRITURAS
+
+A continuación se describe cómo se consumen las unidades de capacidad de escritura en las operaciones de escritura de DynamoDB:
+
+PutItem:
+Escribe un solo elemento en una tabla. Si ya existe un elemento con la misma clave principal en la tabla, la
+operación lo sustituye. Para calcular el consumo de desempeño provisionado, el tamaño de elemento que se tiene en cuenta
+es el mayor de los dos.
+
+UpdateItem:
+Modifica un solo elemento en la tabla. DynamoDB considera el tamaño del elemento tal y como aparece antes y
+después de la actualización. El desempeño provisionado consumido refleja el mayor de estos tamaños de elemento. Aunque se
+actualice tan solo un subconjunto de atributos del elemento, UpdateItem consumirá la cantidad total de desempeño provisionado
+(el mayor de los tamaños de elemento de "antes" y "después").
+
+DeleteItem:
+Elimina un solo elemento de una tabla. El consumo de desempeño provisionado se basa en el tamaño del elemento
+eliminado.
+
+BatchWriteItem:
+Escribe hasta 25 en una o más tablas. DynamoDB procesa cada elemento del lote como una solicitud PutItem o
+DeleteItem individual (no se admiten las actualizaciones). En consecuencia, DynamoDB redondea primero el tamaño de cada
+elemento al múltiplo de 1 KB inmediatamente superior y, a continuación, calcula el tamaño total. El resultado no es
+necesariamente igual que el tamaño total de todos los elementos. Por ejemplo, si BatchWriteItem escribe un elemento de
+500 bytes y un elemento de 3,5 KB, DynamoDB calcula el tamaño en 5 KB (1 KB + 4 KB) y no en 4 KB (500 bytes + 3,5 KB).
+
+
+
+
+
+
+
+
+
+
