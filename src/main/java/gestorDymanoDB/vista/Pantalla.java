@@ -1,9 +1,10 @@
-package GestorDymanoDB.vista;
+package gestorDymanoDB.vista;
 
-import GestorDymanoDB.conexion.Conexion;
-import GestorDymanoDB.tabla.Tabla;
+import gestorDymanoDB.conexion.Conexion;
+import gestorDymanoDB.tabla.Tabla;
 import com.amazonaws.services.dynamodbv2.document.DynamoDB;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Pantalla {
@@ -36,7 +37,7 @@ public class Pantalla {
     /**
      * Funcion para iniciar el programa principal
      */
-    public void inicio() {
+    public void inicio()  {
         int opcion; // opcion elegida
         do {
             menuPrincipal();
@@ -61,12 +62,22 @@ public class Pantalla {
                     break;
 
                 case INSERT_DATA_TABLE:
+                    System.out.print("Ingrese el nombre de la tabla para cargar los datos: ");
+                    String nombreTablaCargar = lectura.nextLine();
+                    System.out.print("Ingrese el nombre del archivo JSON a cargar: ");
+                    String archivoJsonCargar = lectura.nextLine() + ".json";
 
+                    try {
+                        tabla.cargarDatos(dynamoDB, nombreTablaCargar, archivoJsonCargar);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     break;
 
                 case SHOW_DATA_TABLE:
-                    System.out.print("Enter the client's last name or letter to search: ");
-
+                    System.out.print("Ingrese el nombre de la tabla a mostrar: ");
+                    String nombreTablaMostrar = lectura.nextLine();
+                    tabla.mostrarDatos(dynamoDB, nombreTablaMostrar);
                     break;
 
                 default:

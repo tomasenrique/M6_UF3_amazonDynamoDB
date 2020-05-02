@@ -1,0 +1,64 @@
+[
+    {
+        "Pais": "Alemania",
+        "Fecha": "26/04/2020",
+        "Contagios_acumulados": 39794,
+        "Contagios_nuevos": 0,
+        "Curados_acumulados": 5976,
+        "Curados_nuevos": 1390,
+        "Muertos_acumulados": 112000,
+        "Muertos_nuevos": 24000,
+        "Test_acumulados": 0,
+        "Test_Nuevos": 0
+    },
+    {
+        "Pais": "España",
+        "Fecha": "26/04/2020",
+        "Contagios_acumulados": 226629,
+        "Contagios_nuevos": 28159,
+        "Curados_acumulados": 23190,
+        "Curados_nuevos": 2837,
+        "Muertos_acumulados": 98732,
+        "Muertos_nuevos": 43164,
+        "Test_acumulados": 0,
+        "Test_Nuevos": 0
+    },
+    {
+        "Pais": "Italia",
+        "Fecha": "06/02/2020",
+        "Contagios_acumulados": 3,
+        "Contagios_nuevos": 17,
+        "Curados_acumulados": 0,
+        "Curados_nuevos": 0,
+        "Muertos_acumulados": 0,
+        "Muertos_nuevos": 0,
+        "Test_acumulados": 0,
+        "Test_Nuevos": 0
+    },
+    {
+        "Pais": "UK",
+        "Fecha": "26/04/2020",
+        "Contagios_acumulados": 132108,
+        "Contagios_nuevos": 28101,
+        "Curados_acumulados": 20794,
+        "Curados_nuevos": 4699,
+        "Muertos_acumulados": 0,
+        "Muertos_nuevos": 0,
+        "Test_acumulados": 0,
+        "Test_Nuevos": 0
+    },
+    {
+        "Pais": "USA",
+        "Fecha": "12/04/2020",
+        "Curados_nuevos": 12322,
+        "Contagios_acumulados": 499265,
+        "Contagios_nuevos": 189866,
+        "Curados_acumulados": 28267,
+        "Muertos_acumulados": 32988,
+        "Muertos_nuevos": 15540,
+        "Test_acumulados": 0,
+        "Test_Nuevos": 0
+    }
+]
+
+

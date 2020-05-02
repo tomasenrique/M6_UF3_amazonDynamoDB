@@ -1,4 +1,4 @@
-package GestorDymanoDB.conexion;
+package gestorDymanoDB.conexion;
 
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
